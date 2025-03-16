@@ -26,6 +26,7 @@
     "@types/express": "^5.0.0",
     "@types/json-schema": "^7.0.15",
     "@types/mongoose": "^5.11.97",
+    "@types/node": "^22.13.10",
     "@vercel/node": "^5.1.14",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
