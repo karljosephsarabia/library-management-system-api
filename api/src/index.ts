@@ -2,6 +2,7 @@ import Database from "./config/db.config";
 import bookRouter from "./routes/book.route";
 import errorHandler from "./middleware/errorHandler";
 import userRouter from "./routes/user.route";
+import { Request, Response } from "express";
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -13,6 +14,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
+app.use('/', (req: Request, res: Response) => {
+    return res.send('Server Connection is Ready...')
+})
 app.use('/api/book', bookRouter); 
 app.use('/api/user-register', userRouter); 
 
