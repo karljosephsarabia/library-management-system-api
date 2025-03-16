@@ -1,13 +1,22 @@
 import { Types } from "mongoose";
-import { Book } from "../schema/book.schema";
-import { User } from "../schema/user.schema";
+import { Book } from "../model/book.model";
+import { User } from "../model/user.model";
 import AppError from "../utils/appError";
 import { BookInput } from "../dto/AddBook.dto";
-import { MongoServerError, ObjectId } from "mongodb";
+import { MongoServerError } from "mongodb";
 
 
 class BookModel {
 
+    //Retrieves all books from the database.
+    async showAllBook() {
+        try {
+            const allBook = await Book.find();
+            return allBook;
+        } catch (err) {
+            throw err;
+        }
+    }
     async insertOneBook(data: BookInput) {
         try {
             return await Book.create(data);
@@ -30,7 +39,7 @@ class BookModel {
         try {
             const book = await Book.findById(bookId);
             if (!book) throw new AppError("Book Not Found", "Not Found Error", 400);
-            if (book.isBorrowed) throw new AppError("Book Not Available", "Not Available", 200);
+            if (book.isBorrowed) return false;
             const user = await User.findOneAndUpdate(email, { $push: { borrowedBooks: book._id } }, { new: true });
             if (!user) throw new AppError("User Not Found", "Not Found Error", 400);
 
@@ -54,8 +63,18 @@ class BookModel {
                 book.save();
                 return book;
             }
-            throw new AppError("Book still Available", "Available", 200);
+            return false;
 
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    //Retrieves available books from the database.
+    async availableBook() {
+        try {
+            const book = await Book.find({ isBorrowed: false });
+            return book;
         } catch (err) {
             throw err;
         }

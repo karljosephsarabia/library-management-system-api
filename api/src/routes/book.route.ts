@@ -15,5 +15,6 @@ bookRouter.patch('/:id/borrow', BookController.borrowBook);
 bookRouter.patch('/:id/return', BookController.returnBook);
 
 // Route for retrieving available books
+bookRouter.get('/available', BookController.availableBook);
 
 export default bookRouter;

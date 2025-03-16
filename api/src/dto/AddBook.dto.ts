@@ -12,4 +12,3 @@ export const AddBookSchema = z.object({
 
 
 export type BookInput = z.infer<typeof AddBookSchema>
-
