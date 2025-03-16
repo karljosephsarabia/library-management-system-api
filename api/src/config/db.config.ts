@@ -14,7 +14,10 @@ class Database {
     async connect() {
         try {
             console.log('database connecting...');
-            await mongoose.connect(this.uri);
+            await mongoose.connect(this.uri, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true
+            });
             const dbState = mongoose.connection.readyState;
             console.log(`MongoDB connection status: ${mongodbConnectionStatus[dbState]}`);
         } catch (err) {
