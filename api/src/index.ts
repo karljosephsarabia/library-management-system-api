@@ -14,11 +14,12 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
+app.use('/api/book', bookRouter); 
+app.use('/api/user-register', userRouter); 
+
 app.use('/', (req: Request, res: Response) => {
     return res.send('Server Connection is Ready...')
 })
-app.use('/api/book', bookRouter); 
-app.use('/api/user-register', userRouter); 
 
 // Error handling middleware
 app.use(errorHandler); 
