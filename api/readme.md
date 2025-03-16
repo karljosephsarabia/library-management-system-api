@@ -100,6 +100,7 @@ When registering a user, the following validation rules apply:
 | POST   | `/api/books/add`        | Register a new book          |
 | PATCH  | `/api/books/:id/borrow` | Borrow a book by ID          |
 | PATCH  | `/api/books/:id/return` | Return a borrowed book by ID |
+| GET    | `/api/books/available`  | Retrieve available books     |
 
 #### Example Request to Add a Book:
 
