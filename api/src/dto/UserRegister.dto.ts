@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+//Zod schema for validating user registration input.
 export const UserRegisterSchema = z.object({
     fullName: z.string().trim().min(3, "Full Name must be a min length of 3 character"),
     email: z.string().email({ message: "Invalid email format" }),

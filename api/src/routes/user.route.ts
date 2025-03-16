@@ -3,6 +3,7 @@ const express = require('express');
 const userRouter = express.Router();
 
 
+// Route for user registration
 userRouter.post('/', UserController.userRegister);
 
 

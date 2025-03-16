@@ -9,6 +9,8 @@ import { BorrowReturnSchema } from "../dto/BorrowReturn.dto";
 
 class BookController {
 
+    //Retrieves all books.
+    //Registers a new book.
     async registerBook(req: Request, res: Response, next: NextFunction) {
         try {
             const result = AddBookSchema.parse(req.body);
@@ -19,6 +21,7 @@ class BookController {
         }
     }
 
+    //Borrows a book.
     async borrowBook(req: Request, res: Response, next: NextFunction) {
         try {
             const bookId = req.params.id;
@@ -34,6 +37,7 @@ class BookController {
 
     }
 
+    //Returns a borrowed book.
     async returnBook(req: Request, res: Response, next: NextFunction) {
         try {
             const bookId = req.params.id;
@@ -46,7 +50,7 @@ class BookController {
         }
     }
 
-    async showAllBooks(req: Request, res: Response, next: NextFunction) {
+    //Retrieves available books.
         try {
             const result = await bookModel.showAllBook();
             if (!result.length) res.status(200).json({ message: "No books found" });

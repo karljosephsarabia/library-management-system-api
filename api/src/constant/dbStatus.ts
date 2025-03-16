@@ -1,6 +1,4 @@
-
-
-
+//Represents the different states of the MongoDB connection.
 enum mongodbConnectionStatus {
     "Disconnected" = 0,
     "Connected" = 1,
@@ -8,4 +6,4 @@ enum mongodbConnectionStatus {
     "Disconnecting" = 3
 };
 
-export default mongodbConnectionStatus
+export default mongodbConnectionStatus;

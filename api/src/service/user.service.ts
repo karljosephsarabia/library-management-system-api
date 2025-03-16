@@ -5,6 +5,8 @@ import AppError from "../utils/appError";
 
 
 class UserModel {
+    
+    //Registers a new user.
     async userRegister(data: UserRegisterInput) {
         try {
             const user = await User.findOne({ email: data.email });

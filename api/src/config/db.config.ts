@@ -3,12 +3,14 @@ import dbConfig from "../constant/config";
 import mongodbConnectionStatus from "../constant/dbStatus";
 
 class Database {
-    private uri;
+    private uri: string;
 
+    //Initializes the MongoDB connection URI.
     constructor() {
         this.uri = `mongodb+srv://${dbConfig.account}:${dbConfig.password}@${dbConfig.cluster}.vynig.mongodb.net/${dbConfig.database}?retryWrites=true&w=majority&appName=Cluster0`;
     }
 
+    //Connects to the MongoDB database.
     async connect() {
         try {
             console.log('database connecting...');
@@ -21,6 +23,7 @@ class Database {
         }
     }
 
+    //Disconnects from the MongoDB database
     async disconnect() {
         await mongoose.disconnect();
         const dbState = mongoose.connection.readyState;

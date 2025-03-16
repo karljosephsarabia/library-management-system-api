@@ -1,3 +1,4 @@
+//Loads environment variables from .env file and exports database credentials.
 import dotenv from "dotenv";
 
 dotenv.config();

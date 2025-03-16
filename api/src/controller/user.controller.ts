@@ -4,6 +4,8 @@ import userModel from "../service/user.service";
 
 
 class UserController {
+
+    //Registers a new user.
     async userRegister(req: Request, res: Response, next: NextFunction) {
         try {
             const userValidation = UserRegisterSchema.parse(req.body);
