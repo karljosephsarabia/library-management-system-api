@@ -95,13 +95,13 @@ When registering a user, the following validation rules apply:
 
 ### Book Routes
 
-| Method | Endpoint                | Description                  |
-| ------ | ----------------------- | ---------------------------- |
-| GET    | `/api/book/`           | Retrieve all books           |
-| POST   | `/api/book/add`        | Register a new book          |
-| PATCH  | `/api/book/:id/borrow` | Borrow a book by ID          |
-| PATCH  | `/api/book/:id/return` | Return a borrowed book by ID |
-| GET    | `/api/book/available`  | Retrieve available books     |
+| Method | Endpoint                      | Description                                |
+| ------ | ----------------------------- | ---------------------------------------    |
+| GET    | `/api/book/:page?`            | Retrieve all books with pagination         |
+| POST   | `/api/book/add`               | Register a new book                        |
+| PATCH  | `/api/book/:id/borrow`        | Borrow a book by ID                        |
+| PATCH  | `/api/book/:id/return`        | Return a borrowed book by ID               |
+| GET    | `/api/book/available/:page?`  | Retrieve available books with pagination   |
 
 
 ### Example Request to Retrieve All Books:
@@ -109,7 +109,7 @@ When registering a user, the following validation rules apply:
 Http Request:
 
 ```http
-http://localhost:3000/api/book
+http://localhost:3000/api/book/1
 ```
 
 Example Response:
@@ -270,7 +270,7 @@ Example Response:
 Http Request
 
 ```http
-http://localhost:3000/api/book/available
+http://localhost:3000/api/book/available/1
 ```
 
 Example Response:
