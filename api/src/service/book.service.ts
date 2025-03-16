@@ -17,6 +17,8 @@ class BookModel {
             throw err;
         }
     }
+
+    //Register a new book into the database.
     async insertOneBook(data: BookInput) {
         try {
             return await Book.create(data);
@@ -26,15 +28,8 @@ class BookModel {
         }
     }
 
-    async showAllBook() {
-        try {
-            const allBook = await Book.find();
-            return allBook;
-        } catch (err) {
-            throw err;
-        }
-    }
 
+    //Borrows a book by updating its status and associating it with a user.
     async borrowBook(bookId: string, email: object) {
         try {
             const book = await Book.findById(bookId);
@@ -52,6 +47,7 @@ class BookModel {
         }
     }
 
+    //Returns a borrowed book by updating its status and removing the association with the user.
     async returnBook(bookId: string) {
         try {
             const book = await Book.findById(bookId);
