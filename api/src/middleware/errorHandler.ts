@@ -4,7 +4,7 @@ import AppError from "../utils/appError";
 
 
 //Middleware function to handle errors.
-const errorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
+const errorHandler = (err: unknown, req: Request, res: Response, next: NextFunction) => {
     console.log(err);
     if (err instanceof z.ZodError) {
         return res.status(400).json({
