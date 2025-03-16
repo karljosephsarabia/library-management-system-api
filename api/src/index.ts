@@ -4,6 +4,8 @@ import errorHandler from "./middleware/errorHandler";
 import userRouter from "./routes/user.route";
 import { Request, Response } from "express";
 
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -19,7 +21,7 @@ app.use('/api/book', bookRouter);
 app.use('/api/user-register', userRouter); 
 
 app.use('/', (req: Request, res: Response) => {
-    return res.send('Server Connection is Ready...')
+    res.send('Server Connection is Ready...')
 })
 
 // Error handling middleware
