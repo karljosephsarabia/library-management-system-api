@@ -2,7 +2,7 @@ import Database from "./config/db.config";
 import bookRouter from "./routes/book.route";
 import errorHandler from "./middleware/errorHandler";
 import userRouter from "./routes/user.route";
-import {VercelRequest, VercelResponse} from "@vercel/node"
+import { Request, Response } from "express";
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -14,10 +14,11 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
+
 app.use('/api/book', bookRouter); 
 app.use('/api/user-register', userRouter); 
 
-app.use('/', (req: VercelRequest, res: VercelResponse) => {
+app.use('/', (req: Request, res: Response) => {
     return res.send('Server Connection is Ready...')
 })
 
