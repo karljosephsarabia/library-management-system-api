@@ -9,9 +9,11 @@ import { MongoServerError } from "mongodb";
 class BookModel {
 
     //Retrieves all books from the database.
-    async showAllBook() {
+    async showAllBook(page: number) {
         try {
-            const allBook = await Book.find();
+            const limit = 10;
+            const skip = (page - 1) * limit;
+            const allBook = await Book.find().skip(skip).limit(limit);
             return allBook;
         } catch (err) {
             throw err;
@@ -67,9 +69,11 @@ class BookModel {
     }
 
     //Retrieves available books from the database.
-    async availableBook() {
+    async availableBook(page: number) {
         try {
-            const book = await Book.find({ isBorrowed: false });
+            const limit = 10;
+            const skip = (page - 1) * limit;
+            const book = await Book.find({ isBorrowed: false }).skip(skip).limit(limit);
             return book;
         } catch (err) {
             throw err;

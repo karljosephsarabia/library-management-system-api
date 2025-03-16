@@ -3,7 +3,7 @@ const bookRouter = express.Router();
 import BookController from "../controller/book.controller";
 
 // Route for retrieving all books
-bookRouter.get('/', BookController.showAllBooks);
+bookRouter.get('/:page?', BookController.showAllBooks);
 
 // Route for adding a new book
 bookRouter.post('/add', BookController.registerBook);
@@ -15,6 +15,6 @@ bookRouter.patch('/:id/borrow', BookController.borrowBook);
 bookRouter.patch('/:id/return', BookController.returnBook);
 
 // Route for retrieving available books
-bookRouter.get('/available', BookController.availableBook);
+bookRouter.get('/available/:page?', BookController.availableBook);
 
 export default bookRouter;

@@ -11,8 +11,9 @@ class BookController {
     //Retrieves all books.
     async showAllBooks(req: Request, res: Response, next: NextFunction) {
         try {
-            const result = await BookModel.showAllBook();
-            if (!result.length) res.status(200).json({ message: "No books found" });
+            const page = parseInt(req.params.page, 10) || 1;
+            const result = await BookModel.showAllBook(page);
+            if (!result.length) return res.status(200).json({ message: "No books found" });
             return res.status(200).json(result);
         } catch (err) {
             next(err);
@@ -64,8 +65,9 @@ class BookController {
     //Retrieves available books.
     async availableBook(req: Request, res: Response, next: NextFunction) {
         try {
-            const book = await BookModel.availableBook();
-            if (!book) return res.status(200).json({ message: "No Book Available" });
+            const page = parseInt(req.params.page, 10) || 1;
+            const book = await BookModel.availableBook(page);
+            if (!book.length) return res.status(200).json({ message: "No Book Available" });
             return res.status(200).json(book);
         } catch (err) {
             next(err);
