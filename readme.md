@@ -45,7 +45,7 @@ This API is designed for user registration and book management, including borrow
 
    ```sh
    git git@github.com:karljosephsarabia/library-management-system-api.git
-   cd api
+   cd library-management-system-api/api
    ```
 
 2. Install dependencies:
